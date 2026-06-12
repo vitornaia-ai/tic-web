@@ -1,0 +1,371 @@
+*{ 
+
+  Margin:0; 
+
+  Padding:0; 
+
+  Box-sizing:border-box; 
+
+  Font-family:Arial, Helvetica, sans-serif; 
+
+} 
+
+ Body{ 
+
+  Background:#f5f5f5; 
+
+  Color:#333; 
+
+} 
+
+ 
+
+/* MENU */ 
+
+ Header{ 
+
+  Background:#111; 
+
+  Padding:20px; 
+
+  Position:sticky; 
+
+  Top:0; 
+
+  z-index:1000; 
+
+}Nav{ 
+
+  Display:flex; 
+
+  Justify-content:space-between; 
+
+  Align-items:center; 
+
+}Nav h1{ 
+
+  Color:white; 
+
+  Font-size:28px; 
+
+} 
+
+ 
+
+Nav ul{ 
+
+  Display:flex; 
+
+  List-style:none; 
+
+  Gap:20px; 
+
+} Nav a{ 
+
+  Color:white; 
+
+  Text-decoration:none; 
+
+  Transition:0.3s; 
+
+} 
+
+ 
+
+Nav a:hover{ 
+
+  Color:#ffb6c1; 
+
+} /* BANNER */ 
+
+ .banner{ 
+
+  Height:90vh; 
+
+  Background-image: linear-gradient(rgba(0,0,0,0.4), 
+
+  Rgba(0,0,0,0.4)), 
+
+  url(“COLE_AQUI_O_LINK_DA_IMAGEM”);   background-position:center; 
+
+  background-size:cover; 
+
+  background-repeat:no-repeat; 
+
+ 
+
+  display:flex; 
+
+  align-items:center; 
+
+  justify-content:center; 
+
+  text-align:center; 
+
+} 
+
+
+
+  Display:flex;  Align-items:center; 
+
+  Justify-content:center; 
+
+  Text-align:center; 
+
+} 
+
+ .banner-texto{ 
+
+  Background:rgba(0,0,0,0.5); 
+
+  Padding:30px; 
+
+  Border-radius:15px; 
+
+  Color:white; 
+
+} 
+
+  
+
+.banner-texto h2{ 
+
+  Font-size:45px; 
+
+  Margin-bottom:15px; 
+
+} 
+
+ 
+
+.banner-texto p{ 
+
+  Font-size:20px; 
+
+} 
+
+ /* CONTEÚDO */ 
+
+ 
+
+.container{ 
+
+  Padding:60px 10%; 
+
+} 
+
+ 
+
+.container h2{   Text-align:center; 
+
+  Margin-bottom:30px; 
+
+  Font-size:35px; 
+
+  Color:#111; 
+
+} 
+
+ 
+
+.cor{ 
+
+  Background:#ffeef2; 
+
+} 
+
+ .foto-principal{ 
+
+  Width:100%; 
+
+  Max-width:700px; 
+
+  Display:block; 
+
+  Margin:20px auto; 
+
+  Border-radius:20px; 
+
+  Box-shadow:0 5px 15px rgba(0,0,0,0.2); 
+
+}.container p{ 
+
+  Margin-top:20px; 
+
+  Line-height:1.8; 
+
+  Font-size:18px; 
+
+  Text-align:justify; 
+
+} 
+
+ 
+
+/* CARDS */ .cards{ 
+
+  Display:flex; 
+
+  Gap:20px; 
+
+  Flex-wrap:wrap; 
+
+  Justify-content:center; 
+
+}.card{ 
+
+  Background:white; 
+
+  Padding:25px; 
+
+  Width:280px; 
+
+  Border-radius:15px; 
+
+  Box-shadow:0 5px 15px rgba(0,0,0,0.1); 
+
+  Text-align:center; 
+
+} .card h3{ 
+
+  Margin-bottom:15px; 
+
+  Color:#e75480; 
+
+} 
+/* APRESENTAÇÕES */ 
+
+ 
+
+.apresentacao{ 
+
+  Margin-bottom:40px; 
+
+} 
+
+ 
+
+.apresentacao h3{   Color:#e75480; 
+
+  Margin-bottom:15px; 
+
+  Font-size:28px; 
+
+} 
+
+ 
+
+/* GALERIA */ 
+
+ 
+
+.videos{ 
+
+  Display:flex; 
+
+  Flex-wrap:wrap; 
+
+  Justify-content:center;  Gap:20px; 
+
+} 
+
+ 
+
+Video{ 
+
+  Width:450px; 
+
+  Border-radius:15px; 
+
+  Box-shadow:0 5px 15px rgba(0,0,0,0.2); 
+
+} 
+
+ /* LISTA */ 
+
+ 
+
+.lista{ 
+
+  Max-width:500px; 
+
+  Margin:auto; 
+
+  List-style:none; 
+
+} 
+
+ .lista li{ 
+
+  Background:white; 
+
+  Margin:15px 0; 
+
+  Padding:15px; 
+
+  Border-radius:10px; 
+
+  Box-shadow:0 5px 10px rgba(0,0,0,0.1); 
+
+} 
+
+ /* RODAPÉ */ 
+
+ 
+
+Footer{ 
+
+  Background:#111; 
+
+  Color:white; 
+
+  Text-align:center; 
+
+  Padding:30px; 
+
+} Footer p{ 
+
+  Margin:10px 0; 
+
+} 
+
+ 
+
+/* RESPONSIVO */ 
+
+ 
+
+@media(max-width:900px){ 
+
+ 
+
+  Nav{ 
+
+    Flex-direction:column; 
+
+    Gap:20px;   } 
+
+ 
+
+  Nav ul{ 
+
+    Flex-wrap:wrap; 
+
+    Justify-content:center; 
+
+  } 
+
+ 
+
+  .banner-texto h2{ 
+
+    Font-size:30px; 
+
+  }
+   Video{ 
+
+    Width:100%; 
+
+  } 
+
+}

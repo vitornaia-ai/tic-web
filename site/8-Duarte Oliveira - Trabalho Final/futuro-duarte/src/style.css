@@ -1,0 +1,139 @@
+
+
+
+
+body {
+ margin: 1;
+ font-family: "Poppins";
+ background-color: #F4A444;
+ color: #ffffff;
+}
+.menu {
+ display: grid;
+ justify-content: space-between;
+ padding-left:15px;
+ padding-right:15px;
+ background: white;
+ border: 1px solid transparent;
+ border-radius: 45px 45px 0 0;
+ margin-bottom: 4%;
+}
+.menu p{font-size:2em; color: #F4A444; font-weight: bold}
+.menu ul { display: flex; list-style: none; font-size:1.2em;}
+.menu li { margin-left: 20px; }
+.menu a { color: #F4A444; text-decoration: none; font-weight: bold; }
+.menu a:hover { color: #F4A444; text-decoration: none; font-weight: bold;
+}
+
+.quem_sou {
+ position: relative;
+ margin-top:-43px;
+ height: 90vh;
+ text-align: center;
+  background: url("https://i.ibb.co/GvFGP8Rr/1.jpg");
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ border: 5px solid #fff;
+ border-radius: 0 0 45px 45px;
+ color: #ffffff;
+}
+.quem_sou h1 {
+ padding-top:60px;
+ font-size: 4rem;
+ letter-spacing: 10px;
+ color: white;
+}
+.quem_sou p {
+ width:100%;
+ position: absolute;
+ left: 50%;
+ font-weight: bold;
+ transform: translateX(-50%);
+ top: 50%;
+ transform: translate(-50%);
+ font-size: 2rem;
+ letter-spacing: 8px;
+ color: #ffffff;
+}
+.rodape p {
+ text-align: center;
+ font-size: 0.8rem;
+ color: white;
+}
+#biografia, #formacao, #criacoesetrabalhoprofissional, #ocorpoeadarcotechnique {padding:10px;text-align: center; color: #F4A444;}
+.amuleto {
+ border: 3px solid white;
+ color: white;
+ border-radius: 30px;
+ padding: 30px;
+ margin-top: 50px;
+ margin-bottom: 50px;
+ display: inline-block;
+}
+.amuleto iframe{
+ width:80%;
+}
+.vida{
+ margin:0 60px 0 60px;
+ font-family:Poppins;
+ font-size:0.9em;
+ text-align:justify;
+ line-height: 1.8;
+ color: #fff;
+}
+
+.tabela {
+ display: grid;
+ grid-template-columns: 1fr 1fr ;
+ gap: 20px;
+ margin-top: 50px;
+ padding-bottom:10px;
+ margin-bottom:20px;
+}
+.coluna{
+ background: white;
+ padding: 40px;
+ border: 5px solid #fff;
+ border-radius: 15px;
+ color: #F4A444;
+}
+.titulo {
+ background: #F4A444;
+ color: #fff;
+ display: inline-block;
+ padding: 5px 15px;
+ border-radius: 30px;
+ font-weight: bold;
+ font-size: 0.8rem;
+ margin-bottom: 20px;
+}
+.imagem {
+ overflow: hidden;
+ border-radius: 30px;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+ transition: transform 0.3s ease-in-out;
+ color: #fff;
+}
+.imagem img {
+ width: 100%;
+ height: 250px;
+ object-fit: cover;
+ display: block;
+}
+.imagem iframe {
+    width: 100%;
+    height: 300px;
+	display: block; 
+}
+#ocorpoeadarcotechnique{
+background-color:##F4A444;
+color: #fff;
+}
+#ocorpoeadarcotechnique img {
+border: 10px solid #fff; 
+border-radius: 25px}
+
+h1, h2, h4, h5, h6, span, li, a:not(.menu a), label, td, th, caption, blockquote, em {
+ color: #ffffff;
+}
