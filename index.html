@@ -1,101 +1,463 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
+<html lang="pt"><head>
   <meta charset="UTF-8">
-  <title>Galeria de Trabalhos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Alunos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #12100e;
+      --paper:     #f4efe8;
+      --warm:      #c8a96e;
+      --muted:     #7a6e62;
+      --card-bg:   #1c1917;
+      --card-text: #e8e0d5;
+      --accent-1:  #c0453a;
+      --accent-2:  #3a6e8c;
+      --accent-3:  #5a8a4a;
+      --accent-4:  #7c5cbf;
+      --accent-5:  #c07830;
+      --accent-6:  #2e7d7d;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial;
-      background-color: #f4f4f4;
-      text-align: center;
+      background-color: var(--ink);
+      color: var(--card-text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 5rem 4rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+      border-bottom: 1px solid rgba(200,169,110,0.2);
+    }
+
+    .header-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .header-label::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--warm);
     }
 
     h1 {
-      margin-top: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--warm);
     }
 
-    .grid {
+    .header-meta {
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      line-height: 2;
+    }
+
+    /* ── GRID ── */
+    .gallery {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 4rem 8rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
 
+    /* wide card every 7th */
+    .card:nth-child(7n+1) { grid-column: span 2; }
+
+    @media (max-width: 900px) {
+      .gallery { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
+      .card:nth-child(7n+1) { grid-column: span 1; }
+      header { padding: 3rem 2rem 2rem; grid-template-columns: 1fr; }
+      .header-meta { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+
+    /* ── CARD ── */
     .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.45s cubic-bezier(0.22,1,0.36,1),
+                  border-color 0.3s ease;
+      animation: fadeUp 0.6s both;
     }
 
-    a {
+    .card:nth-child(1)  { animation-delay: 0.05s; }
+    .card:nth-child(2)  { animation-delay: 0.10s; }
+    .card:nth-child(3)  { animation-delay: 0.15s; }
+    .card:nth-child(4)  { animation-delay: 0.20s; }
+    .card:nth-child(5)  { animation-delay: 0.25s; }
+    .card:nth-child(6)  { animation-delay: 0.30s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(200,169,110,0.25);
+      border-color: rgba(200,169,110,0.3);
+    }
+
+    .card a {
+      display: block;
       text-decoration: none;
-      color: white;
-      background: #007acc;
-      padding: 10px 15px;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 10px;
+      color: inherit;
+      height: 100%;
     }
 
-    a:hover {
-      background: #005f99;
+    /* abstract pattern block */
+    .card-visual {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
     }
+    .card:nth-child(7n+1) .card-visual { height: 220px; }
+
+    .card-visual svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .card-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, var(--card-bg) 100%);
+    }
+
+    /* index badge */
+    .card-index {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Syne', sans-serif;
+      z-index: 2;
+    }
+
+    .card-body {
+      padding: 1.25rem 1.5rem 1.75rem;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--paper);
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .card:hover .card-name { color: var(--warm); }
+
+    .card-link-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1rem;
+      transition: color 0.2s;
+    }
+    .card:hover .card-link-row { color: var(--warm); }
+
+    .card-link-row svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .card:hover .card-link-row svg { transform: translate(3px,-3px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(200,169,110,0.12);
+      padding: 2rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── PATTERNS (inline SVG backgrounds per card) ── */
   </style>
 </head>
-
 <body>
 
-  <h1>Galeria de Trabalhos dos Alunos</h1>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Trabalho 3</h3>
-      <a href="3-website/src/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Trabalho 4</h3>
-      <a href="4-trabalho_final/src/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Trabalho 7</h3>
-      <a href="7-trabalho-final/src/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Duarte Oliveira</h3>
-      <a href="8-Duarte Oliveira - Trabalho Final/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Trabalho 9</h3>
-      <a href="9-untitled/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Trabalho 10</h3>
-      <a href="10-trabalho-final/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Letícia</h3>
-      <a href="11-trabalho_final_leticia/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Trabalho 13</h3>
-      <a href="13-trabalho-final/index.html">Ver</a>
-    </div>
-
-    <div class="card">
-      <h3>Trabalho 14</h3>
-      <a href="14-cria-osite/index.html">Ver</a>
-    </div>
-
+<header>
+  <div>
+    <p class="header-label">Portfólio da Turma</p>
+    <h1>Galeria das Páginas Web<br><em>11º AB</em></h1>
   </div>
+  <div class="header-meta">
+    <p>Projetos Web</p>
+    <p>2025 – 2026</p>
+  </div>
+</header>
 
-</body>
-</html>
+<main class="gallery">
+
+  <!-- ═══════════════════════════════════════════
+       STUDENT CARDS
+       To add a new student, copy one <article> block,
+       update the name, href (folder name), and pick a
+       new accent colour for the SVG pattern.
+  ════════════════════════════════════════════ -->
+
+  <!-- 1. Ana Silva -->
+  <article class="card">
+    <a href="./ana-silva/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="card-visual">
+        <span class="card-index">01</span>
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#1c1917"></rect>
+          <circle cx="80" cy="60" r="120" fill="#c0453a" opacity="0.25"></circle>
+          <circle cx="340" cy="180" r="90" fill="#c0453a" opacity="0.18"></circle>
+          <line x1="0" y1="110" x2="400" y2="110" stroke="#c0453a" stroke-width="0.5" opacity="0.4"></line>
+          <line x1="200" y1="0" x2="200" y2="220" stroke="#c0453a" stroke-width="0.5" opacity="0.4"></line>
+          <rect x="160" y="80" width="80" height="60" fill="none" stroke="#c0453a" stroke-width="1" opacity="0.5"></rect>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name">Ana Silva</h2>
+        <div class="card-link-row">
+          <span>Ver projeto</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 13L13 3M13 3H7M13 3V9"></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </article>
+
+  <!-- 2. Bruno Costa -->
+  <article class="card">
+    <a href="./bruno-costa/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="card-visual">
+        <span class="card-index">02</span>
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#1c1917"></rect>
+          <polygon points="200,10 390,210 10,210" fill="#3a6e8c" opacity="0.2"></polygon>
+          <polygon points="200,50 360,200 40,200" fill="#3a6e8c" opacity="0.15"></polygon>
+          <circle cx="200" cy="140" r="60" fill="none" stroke="#3a6e8c" stroke-width="1" opacity="0.5"></circle>
+          <line x1="10" y1="10" x2="390" y2="210" stroke="#3a6e8c" stroke-width="0.5" opacity="0.3"></line>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name">Bruno Costa</h2>
+        <div class="card-link-row">
+          <span>Ver projeto</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 13L13 3M13 3H7M13 3V9"></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </article>
+
+  <!-- 3. Carla Mendes -->
+  <article class="card">
+    <a href="./carla-mendes/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="card-visual">
+        <span class="card-index">03</span>
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#1c1917"></rect>
+          <rect x="40" y="40" width="320" height="140" fill="#5a8a4a" opacity="0.12"></rect>
+          <rect x="70" y="70" width="260" height="80" fill="#5a8a4a" opacity="0.15"></rect>
+          <rect x="100" y="95" width="200" height="30" fill="#5a8a4a" opacity="0.2"></rect>
+          <circle cx="200" cy="110" r="80" fill="none" stroke="#5a8a4a" stroke-width="0.8" opacity="0.45"></circle>
+          <circle cx="200" cy="110" r="50" fill="none" stroke="#5a8a4a" stroke-width="0.5" opacity="0.35"></circle>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name">Carla Mendes</h2>
+        <div class="card-link-row">
+          <span>Ver projeto</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 13L13 3M13 3H7M13 3V9"></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </article>
+
+  <!-- 4. David Santos -->
+  <article class="card">
+    <a href="./david-santos/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="card-visual">
+        <span class="card-index">04</span>
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#1c1917"></rect>
+          <path d="M0,110 Q100,20 200,110 Q300,200 400,110" fill="none" stroke="#7c5cbf" stroke-width="1.5" opacity="0.6"></path>
+          <path d="M0,130 Q100,40 200,130 Q300,220 400,130" fill="none" stroke="#7c5cbf" stroke-width="0.8" opacity="0.35"></path>
+          <path d="M0,90 Q100,0 200,90 Q300,180 400,90" fill="none" stroke="#7c5cbf" stroke-width="0.8" opacity="0.35"></path>
+          <circle cx="200" cy="110" r="30" fill="#7c5cbf" opacity="0.2"></circle>
+          <circle cx="200" cy="110" r="8" fill="#7c5cbf" opacity="0.5"></circle>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name">David Santos</h2>
+        <div class="card-link-row">
+          <span>Ver projeto</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 13L13 3M13 3H7M13 3V9"></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </article>
+
+  <!-- 5. Eva Rodrigues -->
+  <article class="card">
+    <a href="./eva-rodrigues/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="card-visual">
+        <span class="card-index">05</span>
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#1c1917"></rect>
+          <line x1="0" y1="0" x2="400" y2="220" stroke="#c07830" stroke-width="0.6" opacity="0.4"></line>
+          <line x1="100" y1="0" x2="400" y2="180" stroke="#c07830" stroke-width="0.6" opacity="0.3"></line>
+          <line x1="200" y1="0" x2="400" y2="110" stroke="#c07830" stroke-width="0.6" opacity="0.3"></line>
+          <line x1="0" y1="110" x2="300" y2="220" stroke="#c07830" stroke-width="0.6" opacity="0.3"></line>
+          <rect x="150" y="70" width="100" height="80" fill="#c07830" opacity="0.15" rx="2"></rect>
+          <rect x="170" y="90" width="60" height="40" fill="#c07830" opacity="0.2" rx="1"></rect>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name">Eva Rodrigues</h2>
+        <div class="card-link-row">
+          <span>Ver projeto</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 13L13 3M13 3H7M13 3V9"></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </article>
+
+  <!-- 6. Filipe Oliveira -->
+  <article class="card">
+    <a href="./filipe-oliveira/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="card-visual">
+        <span class="card-index">06</span>
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#1c1917"></rect>
+          <circle cx="100" cy="60" r="70" fill="none" stroke="#2e7d7d" stroke-width="1" opacity="0.5"></circle>
+          <circle cx="100" cy="60" r="40" fill="none" stroke="#2e7d7d" stroke-width="0.6" opacity="0.35"></circle>
+          <circle cx="300" cy="160" r="90" fill="none" stroke="#2e7d7d" stroke-width="1" opacity="0.4"></circle>
+          <circle cx="300" cy="160" r="50" fill="none" stroke="#2e7d7d" stroke-width="0.6" opacity="0.3"></circle>
+          <line x1="100" y1="60" x2="300" y2="160" stroke="#2e7d7d" stroke-width="0.8" opacity="0.4"></line>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name">Filipe Oliveira</h2>
+        <div class="card-link-row">
+          <span>Ver projeto</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 13L13 3M13 3H7M13 3V9"></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </article>
+
+  <!--
+    ═══════════════════════════════════════════
+    ADICIONAR NOVO ALUNO — copie e adapte:
+
+  <article class="card">
+    <a href="./nome-do-aluno/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="card-visual">
+        <span class="card-index">07</span>
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#1c1917"/>
+          ...desenho abstracto com a cor escolhida...
+        </svg>
+      </div>
+      <div class="card-body">
+        <h2 class="card-name">Nome do Aluno</h2>
+        <div class="card-link-row">
+          <span>Ver projeto</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 13L13 3M13 3H7M13 3V9"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </article>
+    ═══════════════════════════════════════════
+  -->
+
+</main>
+
+<footer>
+  <span>Galeria · Projetos de Alunos</span>
+  <span>2025–2026</span>
+</footer>
+
+
+
+</body></html>
