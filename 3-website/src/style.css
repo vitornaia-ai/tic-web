@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f8fb;
+  color: #333;
+}
+
+/* MENU */
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: #0d6efd;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.menu p {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: white;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+}
+
+.menu li {
+  margin-left: 30px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #dff6ff;
+}
+
+/* CAPA */
+
+.quem_sou {
+  position: relative;
+  margin-top: -25px;
+  height: 85vh;
+
+  background: linear-gradient(
+      rgba(13,110,253,0.45),
+      rgba(13,110,253,0.45)
+    ),
+    url("https://i.ibb.co/XrtHw6DC/IMG-1488.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-align: center;
+  border-bottom: 5px solid #20c997;
+}
+
+.quem_sou h1 {
+  padding-top: 160px;
+  font-size: 4.5rem;
+  color: white;
+  letter-spacing: 4px;
+}
+
+.quem_sou p {
+  font-size: 1.8rem;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/* SECÇÕES */
+
+#biografia,
+#formacao,
+#especialidades,
+#servicos {
+  padding: 60px 0;
+  text-align: center;
+}
+
+h2 {
+  color: #0d6efd;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+/* TEXTO */
+
+.vida {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 30px;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+/* FOTO */
+
+.amuleto {
+  margin-top: 30px;
+}
+
+.amuleto img {
+  width: 320px;
+  max-width: 100%;
+}
+
+/* FORMAÇÃO E ESPECIALIDADES */
+
+.tabela {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 30px;
+}
+
+.coluna {
+  background: white;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-top: 5px solid #20c997;
+}
+
+.titulo {
+  background: #20c997;
+  color: white;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* IMAGENS */
+
+.imagem {
+  overflow: hidden;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.imagem:hover {
+  transform: translateY(-5px);
+}
+
+.imagem p {
+  padding: 15px;
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+.imagem img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+/* SERVIÇOS */
+
+#servicos {
+  background: white;
+}
+
+#servicos ul {
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+/* RODAPÉ */
+
+.rodape {
+  background: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+}
