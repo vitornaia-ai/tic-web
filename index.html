@@ -33,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* Noise overlay */
     body::before {
       content: '';
       position: fixed;
@@ -44,8 +43,7 @@
       opacity: 0.35;
     }
 
-    /* ── HEADER ── */
-    header {
+     header {
       padding: 5rem 4rem 3rem;
       max-width: 1400px;
       margin: 0 auto;
@@ -95,7 +93,6 @@
       line-height: 2;
     }
 
-    /* ── GRID ── */
     .gallery {
       max-width: 1400px;
       margin: 0 auto;
@@ -104,9 +101,6 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-
-    /* wide card every 7th */
-    /*.card:nth-child(7n+1) { grid-column: span 2; }*/
 
     @media (max-width: 900px) {
       .gallery { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
@@ -118,7 +112,6 @@
       .gallery { grid-template-columns: 1fr; }
     }
 
-    /* ── CARD ── */
     .card-visual {
   position: relative; /* Mantém o '01' posicionado corretamente sobre a imagem */
   overflow: hidden;   /* Impede que a imagem ultrapasse as bordas do card */
@@ -169,7 +162,6 @@
       height: 100%;
     }
 
-    /* abstract pattern block */
     .card-visual {
       height: 180px;
       position: relative;
@@ -191,7 +183,6 @@
       background: linear-gradient(to bottom, transparent 40%, var(--card-bg) 100%);
     }
 
-    /* index badge */
     .card-index {
       position: absolute;
       top: 1rem;
@@ -240,7 +231,6 @@
     }
     .card:hover .card-link-row svg { transform: translate(3px,-3px); }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1px solid rgba(200,169,110,0.12);
       padding: 2rem 4rem;
@@ -255,7 +245,6 @@
       color: var(--muted);
     }
 
-    /* ── PATTERNS (inline SVG backgrounds per card) ── */
   </style>
 </head>
 <body>
@@ -272,13 +261,6 @@
 </header>
 
 <main class="gallery">
-
-  <!-- ═══════════════════════════════════════════
-       STUDENT CARDS
-       To add a new student, copy one <article> block,
-       update the name, href (folder name), and pick a
-       new accent colour for the SVG pattern.
-  ════════════════════════════════════════════ -->
 
   <!-- 3. Bárbara -->
   <article class="card">
@@ -373,20 +355,12 @@
     </a>
   </article>
 
-  <!-- 5. Eva Rodrigues -->
+  <!-- 9. Edmara -->
   <article class="card">
     <a href="./site/9-untitled/src/index.html" target="_blank" rel="noopener noreferrer">
       <div class="card-visual">
-        <span class="card-index">05</span>
-        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="220" fill="#1c1917"></rect>
-          <line x1="0" y1="0" x2="400" y2="220" stroke="#c07830" stroke-width="0.6" opacity="0.4"></line>
-          <line x1="100" y1="0" x2="400" y2="180" stroke="#c07830" stroke-width="0.6" opacity="0.3"></line>
-          <line x1="200" y1="0" x2="400" y2="110" stroke="#c07830" stroke-width="0.6" opacity="0.3"></line>
-          <line x1="0" y1="110" x2="300" y2="220" stroke="#c07830" stroke-width="0.6" opacity="0.3"></line>
-          <rect x="150" y="70" width="100" height="80" fill="#c07830" opacity="0.15" rx="2"></rect>
-          <rect x="170" y="90" width="60" height="40" fill="#c07830" opacity="0.2" rx="1"></rect>
-        </svg>
+        <span class="card-index">09</span>
+        <img src="https://i.ibb.co/hJ8jjV6q/PICT0130.jpg" class="imagem-card">
       </div>
       <div class="card-body">
         <h2 class="card-name">Edmara Gonçalves</h2>
