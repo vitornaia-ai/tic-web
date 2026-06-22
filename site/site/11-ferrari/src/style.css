@@ -1,0 +1,88 @@
+body{
+  margin:0;
+  font-family: 'Inter', sans-serif;
+  color: #F5F5F5;
+  background-color:#0a0a0a;
+}
+.menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #0a0a0a;
+  text-transform: uppercase;
+}
+.menu ul{
+  display: flex;
+  list-style: none;
+}
+.menu li{
+  margin-right:20px;
+  margin-left:20px;
+}
+.menu a{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.menu a:hover{
+  color: #0057FF;
+}
+.inicio{
+  text-align: center;
+  padding: 30px;
+  font-size:2rem;
+  text-transform: uppercase;
+  height:100vh;
+  background: url("https://i.ibb.co/C5YgHxHh/st-Ozi.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+.conteudo{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    margin:60px 40px;
+}
+
+.conteudo[data-side="reverse"]{
+    flex-direction:row-reverse;
+}
+
+.conteudo img{
+    width:40%;
+    max-width:450px;
+    height:auto;
+    border-radius:10px;
+}
+
+.texto{
+    flex:1;
+}
+
+.texto p{
+    text-align:justify;
+    line-height:1.8;
+    font-size:1rem;
+}
+h2{
+    text-align:center;
+    margin:50px 0 30px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+.conteudo{
+  border-top: 2px solid darkred;
+  border-bottom: 2px solid darkred;
+}
+.rodape{
+ text-align: center;
+ padding: 30px;
+ font-size: 0.8rem;
+ border-top: 5px solid #D40000;
+}

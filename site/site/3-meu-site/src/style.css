@@ -1,0 +1,123 @@
+  header {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+      url(https://motos125.es/backend-images/blocks/banner/xl/2613fc358782beb2ed5ee3e765e8d74dbf0e25742fbd53b80f4626d1624acc1a/qj-motor-trx-125-3.webp) center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }  
+   body {
+      background: #0f0f0f;
+      color: white;
+      line-height: 1.6;
+    }
+    .title{
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .title h2 {
+      font-size: 2.8rem;
+      color: #ff2b2b;
+      margin-bottom: 10px;
+    }
+    .title p {
+      color: #aaa;
+    }
+    .he{
+      max-width: 800px;
+    }
+   .he h1 {
+      font-size: 4rem;
+      color: #ff2b2b;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .he p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 30px;
+    } * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 35px;
+      background: #ff2b2b;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+    section {
+      padding: 80px 10%;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .title h2 {
+      font-size: 2.8rem;
+      color: #ff2b2b;
+      margin-bottom: 10px;
+    }
+    .title p {
+      color: #aaa;
+    }
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+    .about img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+   .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .about-texaboutt p {
+      color: #ccc;
+      margin-bottom:15px;
+    }
+    .about-text h3 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .specs {
+      background: #171717;
+    }
+    .cartões {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+    .Especificações {
+      background: #222;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid transparent;
+    }
+    .Especificações h3 {
+      color: #ff2b2b;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+.moto{
+  width:  100%   
+} 
