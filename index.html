@@ -119,6 +119,18 @@
     }
 
     /* ── CARD ── */
+    .card-visual {
+  position: relative; /* Mantém o '01' posicionado corretamente sobre a imagem */
+  overflow: hidden;   /* Impede que a imagem ultrapasse as bordas do card */
+  width: 400px;
+  height: 220px;
+}
+
+.imagem-card {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Faz a imagem cobrir o espaço sem distorcer */
+}
     .card {
       position: relative;
       border-radius: 4px;
